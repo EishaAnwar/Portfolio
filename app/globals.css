@@ -24,3 +24,47 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (min-width: 768px) {
+  .outer-container .main-container {
+    width: 80%;
+  }
+}
+
+
+@media(min-width: 1024px) {
+  .profile-card-container[data-v-34bf6d94] {
+      position:sticky
+  }
+}
+
+@media(min-width: 768px) {
+  .profile-card-container .about-me-container[profile-card] {
+      flex-direction:row
+  }
+}
+
+@media(min-width: 1024px) {
+  .profile-card-container .about-me-container[profile-card] {
+      width:344px;
+      flex-direction: column
+  }
+}
+
+
+.profile-card-container .about-me-container[profile-card] {
+  margin: 20px;
+  width: 240px;
+  height: 210px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 12px
+}
