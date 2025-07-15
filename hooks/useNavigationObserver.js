@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
 
-const sectionIds = ["home","about", "projects", "skills", "stories", "contact"];
+const sectionIds = ["home", "about", "projects", "skills", "stories", "contact"];
 
 export default function useNavigationObserver() {
-  const [viewedSection, setViewedSection] = useState("");
+  const [viewedSection, setViewedSection] = useState("#home");
   const [isVertical, setIsVertical] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      // Force "home" if near top
+      if (scrollY < 100) {
+        setViewedSection("#home");
+        setIsVertical(false);
+        return;
+      }
+
       let closestSection = "";
       let minDistance = Infinity;
 
@@ -30,17 +39,14 @@ export default function useNavigationObserver() {
         setViewedSection(closestSection);
       }
 
-      // Optional: Toggle vertical nav when scrolled past a point
-      setIsVertical(window.scrollY > 150);
+      setIsVertical(scrollY > 150);
     };
 
-    // Run on mount
-    handleScroll();
+    handleScroll(); // Run on mount
 
-    // Listen for scroll + resize
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleScroll);
-    console.log("active", viewedSection);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
