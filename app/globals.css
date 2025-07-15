@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #151312;
     --foreground: #ededed;
   }
 }
@@ -39,32 +39,99 @@ body {
   }
 }
 
+.main-container {
+  top: 40px;
 
-@media(min-width: 1024px) {
-  .profile-card-container[data-v-34bf6d94] {
-      position:sticky
+  .about-me-container {
+    .profile-card-container {
+      background-color: white;
+      padding: 30px;
+      height: fit-content;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      gap: 15px;
+      position: static;
+      @media (min-width: 1024px) {
+        position: sticky;
+      }
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
+
+      @media (min-width: 1024px) {
+        width: 344px;
+        flex-direction: column;
+      }
+
+      .profile-image {
+        margin: 20px;
+        width: 240px;
+        height: 210px;
+        object-fit: cover;
+        border-radius: 12px;
+        overflow: hidden;
+
+        @media (min-width: 768px) {
+          height: 284px;
+        }
+      }
+
+      .shape4 {
+        position: absolute;
+        top: 92%;
+        left: 2%;
+        width: 55px;
+        transform: translateX(-50%);
+
+        @media (min-width: 768px) {
+          width: 70px;
+        }
+      }
+
+      .bio {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .intro {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .name {
+            font-size: 35px;
+            font-size: clamp(24px, 6vw, 35px);
+            font-weight: bold;
+            color: #0a0a0a;
+          }
+
+          .profeesional-summary {
+            color: #6a6b6e;
+            font-size: 18px;
+            width: 100%;
+            max-width: 315px;
+          }
+        }
+
+        .social-media-links {
+          width: fit-content;
+          display: flex;
+          gap: 20px;
+
+          img {
+            cursor: pointer;
+            transition: transform 0.3s;
+            &:hover {
+              transform: translateY(-8px);
+            }
+          }
+        }
+      }
+    }
   }
-}
-
-@media(min-width: 768px) {
-  .profile-card-container .about-me-container[profile-card] {
-      flex-direction:row
-  }
-}
-
-@media(min-width: 1024px) {
-  .profile-card-container .about-me-container[profile-card] {
-      width:344px;
-      flex-direction: column
-  }
-}
-
-
-.profile-card-container .about-me-container[profile-card] {
-  margin: 20px;
-  width: 240px;
-  height: 210px;
-  -o-object-fit: cover;
-  object-fit: cover;
-  border-radius: 12px
 }
