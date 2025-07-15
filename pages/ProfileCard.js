@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -23,7 +24,11 @@ export default function Home() {
           </div>
         </div>
         <div className="social-media-links">
-          <a target="_blank" href="https://github.com/EishaAnwar">
+          <Link
+            target="_blank"
+            href="https://github.com/EishaAnwar"
+            title="Github"
+          >
             <Image
               src={
                 "https://res.cloudinary.com/djivuystd/image/upload/v1752581545/github-logo_i3euk7.svg"
@@ -32,8 +37,12 @@ export default function Home() {
               width={24}
               height={24}
             />
-          </a>
-          <a target="_blank" href="mailto:eishaanwar51@gmail.com">
+          </Link>
+          <Link
+            target="_blank"
+            href="mailto:eishaanwar51@gmail.com"
+            title="Gmail"
+          >
             <Image
               src={
                 "https://res.cloudinary.com/djivuystd/image/upload/v1752589822/gmail-logo_ldyheb.png"
@@ -42,8 +51,11 @@ export default function Home() {
               width={24}
               height={24}
             />
-          </a>
-          <a target="_blank" href="https://www.linkedin.com/in/eisha-anwar/">
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/eisha-anwar/"
+            title="LinkedIn"
+          >
             <Image
               src={
                 "https://res.cloudinary.com/djivuystd/image/upload/v1752581545/linkedin-logo_d6z28n.svg"
@@ -52,7 +64,23 @@ export default function Home() {
               width={24}
               height={24}
             />
-          </a>
+          </Link>
+          <Link
+            href="/EishaAnwarResume.pdf"
+            title="Download Resume"
+            target="_blank"
+            download
+            rel="noopener noreferrer"
+          >
+            <Image
+              src={
+                "https://res.cloudinary.com/djivuystd/image/upload/v1752592834/download-icon_vxquki.png"
+              }
+              alt={"Download Resume"}
+              width={24}
+              height={24}
+            />
+          </Link>
         </div>
       </div>
 
