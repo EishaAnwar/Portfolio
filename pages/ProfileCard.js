@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function ProfileCard() {
   return (
     <div className="profile-card-wrapper gap-25 flex-row items-end fade-in">
-      <div className="profile-card-container overflow-hidden ">
-        <div className="absolute top-0 left-0 w-[65px] h-[65px] bg-orange-500 rounded-br-full z-1 rounded-tl-[12px]" />
+      <div className="profile-card-container relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-10 h-10 md:w-[65px] md:h-[65px] bg-orange-500 rounded-br-full z-10 pointer-events-none" />
         <div className="profile-image">
           <Image
             src={
@@ -84,8 +84,7 @@ export default function ProfileCard() {
             </Link>
           </div>
         </div>
-
-        <div className="absolute bottom-0 right-0 w-[65px] h-[65px] bg-orange-500 rounded-tl-full z-1" />
+        <div className="absolute bottom-0 right-0 w-[65px] h-[65px] bg-orange-500 rounded-tl-full z-10 pointer-events-none" />{" "}
       </div>
     </div>
   );

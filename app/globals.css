@@ -59,6 +59,8 @@ body {
     }
 
     .profile-card-wrapper {
+      position: relative;
+
       .profile-card-container {
         background-color: white;
         padding: 30px;

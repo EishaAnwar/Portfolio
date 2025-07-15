@@ -3,32 +3,32 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
+
 export default function AGlimpseOfMyLife() {
   const [images, setImages] = useState([]);
 
-  const fetchImages = async () => {
-    try {
-      const response = await fetch("/api/my_life_images");
-      const data = await response.json();
-      if (data.success) {
-        setImages(data.data);
-      } else {
-        console.error("Failed to fetch images");
-      }
-    } catch (error) {
-      console.error("Error fetching images:", error);
-    }
-  };
-
-  // Fetch all images on component mount
   useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch("/api/my_life_images");
+        const data = await response.json();
+        if (data.success) {
+          setImages(data.data);
+        } else {
+          console.error("Failed to fetch images");
+        }
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+
     fetchImages();
   }, []);
 
   return (
-    <div className="relative">
-      {images.length > 0 && (
-        <div className="flex gap-8 sm:px-4 sm:py-8 overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <section className="w-full overflow-x-hidden">
+      <div className="overflow-x-auto scrollbar-hide">
+        <div className="flex gap-8 px-4 py-8 w-max">
           {images.map((img, index) => (
             <div
               key={index}
@@ -50,16 +50,15 @@ export default function AGlimpseOfMyLife() {
                 fill
                 className="object-cover"
               />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 flex items-end transition-opacity duration-300 ">
-                <p className="text-[14px] font-bold p-[10px] break-words whitespace-normal text-left text-white font-sans ">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 flex items-end transition-opacity duration-300">
+                <p className="text-[14px] font-bold p-[10px] break-words whitespace-normal text-left text-white font-sans">
                   {img.display_name}
                 </p>
               </div>
             </div>
           ))}
         </div>
-      )}
-    </div>
+      </div>
+    </section>
   );
 }

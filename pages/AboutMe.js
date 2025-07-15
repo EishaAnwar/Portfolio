@@ -33,7 +33,7 @@ export default function ABoutMe() {
             <span className="line-break">COMPLETED</span>
           </div>
         </div>
-        <div className="talkBtn">
+        <div className="talkBtn" id = "projects">
           <Image
             src="https://res.cloudinary.com/djivuystd/image/upload/v1752598677/stack-icon_r0hjzw.svg"
             alt="stack icon"
