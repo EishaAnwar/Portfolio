@@ -2,25 +2,25 @@ import AGlimpseOfMyLife from "@/pages/AGlimpseOfMyLife";
 import ProfileCard from "@/pages/ProfileCard";
 import AboutMe from "@/pages/AboutMe";
 import AppNavigation from "@/pages/AppNavigation";
+import EmbedLinkedInPost from "@/pages/EmbedLinkedInPost";
 
 export default function Home() {
   return (
-    <div className="outer-container">
-      <AppNavigation/>
-      <div className="grid">
+    <>
+      <div className="outer-container">
+        <AppNavigation />
         <AGlimpseOfMyLife />
-      </div>
       <div className="main-container mx-auto">
         <div className="about-me-wrapper-container">
-          <div className="profile-card-wrapper gap-25 flex-row items-end">
+          <div className="profile-card-wrapper">
             <ProfileCard />
           </div>
           <div className="about-me-sections" >
             <AboutMe />
+            <EmbedLinkedInPost />
           </div>
         </div>
-      </div>
-      
-    </div>
+      </div></div>
+    </>
   );
 }

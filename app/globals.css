@@ -19,10 +19,15 @@
   }
 }
 
+html,
 body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -53,29 +58,30 @@ body {
 
     @media (min-width: 1024px) {
       flex-direction: row;
-      align-items: start;
+      align-items: flex-start;
       gap: 100px;
       padding: 20px;
     }
 
     .profile-card-wrapper {
       position: relative;
+      height: fit-content;
+      align-self: flex-start;
+
+      @media (min-width: 1024px) {
+        position: sticky;
+        top: 50px;
+      }
 
       .profile-card-container {
         background-color: white;
         padding: 30px;
-        height: fit-content;
         border-radius: 12px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        position: relative;
         width: 100%;
         gap: 15px;
-        position: static;
-        @media (min-width: 1024px) {
-          position: sticky;
-        }
 
         @media (min-width: 768px) {
           flex-direction: row;
@@ -99,18 +105,6 @@ body {
           }
         }
 
-        .shape4 {
-          position: absolute;
-          top: 92%;
-          left: 2%;
-          width: 55px;
-          transform: translateX(-50%);
-
-          @media (min-width: 768px) {
-            width: 70px;
-          }
-        }
-
         .bio {
           display: flex;
           flex-direction: column;
@@ -122,7 +116,6 @@ body {
             gap: 8px;
 
             .name {
-              font-size: 35px;
               font-size: clamp(24px, 6vw, 35px);
               font-weight: bold;
               color: #0a0a0a;
@@ -144,15 +137,18 @@ body {
             img {
               cursor: pointer;
               transition: transform 0.3s;
-              &:hover {
-                transform: translateY(-8px);
-              }
+            }
+
+            img:hover {
+              transform: translateY(-8px);
             }
           }
         }
       }
     }
+
     .about-me-sections {
+      flex: 1;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -171,6 +167,7 @@ body {
           p:first-child {
             color: white;
           }
+
           p:last-child {
             color: #b6b4bd33;
           }
@@ -193,16 +190,10 @@ body {
           justify-content: space-between;
           flex-wrap: wrap;
           gap: 20px;
-
           margin: 10px 0;
 
           @media (min-width: 768px) {
-            margin: 60px 0;
-          }
-
-          .line-break {
-            display: block;
-            line-height: 1.4;
+            margin-top: 60px;
           }
 
           .stats {
@@ -225,10 +216,6 @@ body {
             }
           }
 
-          .line-break {
-            display: block;
-          }
-
           .talkBtn {
             padding: 20px;
             margin: 20px 0;
@@ -239,7 +226,7 @@ body {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            align-items: start;
+            align-items: flex-start;
             cursor: pointer;
             width: 100%;
 
