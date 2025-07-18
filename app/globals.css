@@ -45,6 +45,8 @@ body {
 
 .main-container {
   top: 40px;
+  width: 90%;
+  margin: 0 auto;
 
   .about-me-wrapper-container {
     display: flex;
@@ -66,6 +68,7 @@ body {
       position: relative;
       height: fit-content;
       align-self: flex-start;
+      width: 100%;
 
       @media (min-width: 1024px) {
         position: sticky;
@@ -79,7 +82,6 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
         gap: 15px;
 
         @media (min-width: 768px) {
