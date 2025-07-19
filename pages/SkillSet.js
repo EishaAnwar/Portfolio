@@ -141,7 +141,7 @@ const skillData = [
 
 export default function SkillSet() {
   return (
-    <div className="container" id="about">
+    <div className="container" id="skills">
       <div className="title">
         <p>Skills</p>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { MdOutlineVerifiedUser } from "react-icons/md"; // MdEmojiEventsOutlined is just for demonstration if exists
 
 const navLinks = [
   {
@@ -10,6 +11,14 @@ const navLinks = [
     activeIcon:
       "https://res.cloudinary.com/djivuystd/image/upload/v1752610486/home-active-icon_dzxjsu.svg",
   },
+
+  {
+    href: "#skills",
+    name: "Skills",
+    icon: "https://res.cloudinary.com/djivuystd/image/upload/v1752600672/skill-icon_bvaghq.svg",
+    activeIcon:
+      "https://res.cloudinary.com/djivuystd/image/upload/v1752604746/skill-active-icon_pyljif.svg",
+  },
   {
     href: "#projects",
     name: "Projects",
@@ -18,11 +27,9 @@ const navLinks = [
       "https://res.cloudinary.com/djivuystd/image/upload/v1752604745/project-active-icon_hjzxb1.svg",
   },
   {
-    href: "#skills",
-    name: "Skills",
-    icon: "https://res.cloudinary.com/djivuystd/image/upload/v1752600672/skill-icon_bvaghq.svg",
-    activeIcon:
-      "https://res.cloudinary.com/djivuystd/image/upload/v1752604746/skill-active-icon_pyljif.svg",
+    href: "#awards",
+    name: "Awards",
+    icon: MdOutlineVerifiedUser,
   },
   {
     href: "#contact",
@@ -51,22 +58,35 @@ export default function NavigationMenu({ viewedSection, vertical }) {
           href={nav.href}
           className="group relative flex items-center justify-center"
         >
-          <Image
-            src={viewedSection === nav.href ? nav.activeIcon : nav.icon}
-            alt={`${nav.name} icon`}
-            width={24}
-            height={21}
-            className="transition-transform duration-200 group-hover:scale-110"
-          />
+          {typeof nav.icon === "string" ? (
+            <Image
+              src={
+                viewedSection === nav.href && nav.activeIcon
+                  ? nav.activeIcon
+                  : nav.icon
+              }
+              alt={`${nav.name} icon`}
+              width={24}
+              height={21}
+              className="transition-transform duration-200 group-hover:scale-110"
+            />
+          ) : (
+            <nav.icon
+              size={24}
+              className={`transition-transform duration-200 group-hover:scale-110 ${
+                viewedSection === nav.href ? "text-[#f46c38]" : "text-white"
+              }`}
+            />
+          )}
 
           <span
             className={`absolute z-10 whitespace-nowrap rounded-[12px] bg-white/20 text-white text-xs px-3 py-2 backdrop-bl-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300
-              ${
-                vertical
-                  ? "top-1/2 right-[calc(100%+30px)] -translate-y-1/2"
-                  : "top-[150%] left-1/2 -translate-x-1/2"
-              }
-            `}
+                ${
+                  vertical
+                    ? "top-1/2 right-[calc(100%+30px)] -translate-y-1/2"
+                    : "top-[150%] left-1/2 -translate-x-1/2"
+                }
+              `}
           >
             {nav.name}
           </span>

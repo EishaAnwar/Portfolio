@@ -4,6 +4,7 @@ import AboutMe from "@/pages/AboutMe";
 import AppNavigation from "@/pages/AppNavigation";
 import EmbedLinkedInPost from "@/pages/EmbedLinkedInPost";
 import SkillSet from "@/pages/SkillSet";
+import MyProjects from "@/pages/MyProjects";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
             <div className="about-me-sections">
               <AboutMe />
               <SkillSet />
+              <MyProjects />
               <EmbedLinkedInPost />
             </div>
           </div>

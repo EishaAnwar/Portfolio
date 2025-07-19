@@ -2,7 +2,7 @@
 
 export default function LinkedInIframeEmbed() {
   return (
-    <div className="container" id="">
+    <div className="container" id="awards">
       <div className="title pb-5">
         <p>Awards</p>
       </div>

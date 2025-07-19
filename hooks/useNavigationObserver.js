@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const sectionIds = ["home", "about", "projects", "skills", "stories", "contact"];
+const sectionIds = ["home", "about", "skills","projects", "awards", "contact"];
 
 export default function useNavigationObserver() {
   const [viewedSection, setViewedSection] = useState("#home");
