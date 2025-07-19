@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { MdOutlineVerifiedUser } from "react-icons/md";
-import { HiOutlineDocumentText } from "react-icons/hi";
+// import { HiOutlineDocumentText } from "react-icons/hi";
 const navLinks = [
   {
     href: "#about",
