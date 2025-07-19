@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { MdOutlineVerifiedUser } from "react-icons/md";
-// import { HiOutlineDocumentText } from "react-icons/hi";
+import { HiOutlineDocumentText } from "react-icons/hi";
 const navLinks = [
   {
     href: "#about",
@@ -31,11 +31,11 @@ const navLinks = [
     name: "Awards",
     icon: MdOutlineVerifiedUser,
   },
-  // {
-  //   href: "#certification",
-  //   name: "Certification",
-  //   icon: HiOutlineDocumentText,
-  // },
+  {
+    href: "#certification",
+    name: "Certification",
+    icon: HiOutlineDocumentText,
+  },
   {
     href: "#contact",
     name: "Contact",

@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import InputField from "../lib/InputField";
+import InputField from "./InputField";
+import { validateField as validate } from "../lib/validations";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -30,36 +31,20 @@ export default function ContactForm() {
   const isFormValid = Object.values(errors).every((e) => !e.invalid);
 
   useEffect(() => {
-    if (!isClearing) validateField("fullName", formData.fullName);
+    if (!isClearing) runValidation("fullName", formData.fullName);
   }, [formData.fullName, isClearing]);
 
   useEffect(() => {
-    if (!isClearing) validateField("email", formData.email);
+    if (!isClearing) runValidation("email", formData.email);
   }, [formData.email, isClearing]);
 
   useEffect(() => {
-    if (!isClearing) validateField("message", formData.message);
+    if (!isClearing) runValidation("message", formData.message);
   }, [formData.message, isClearing]);
 
-  const validateField = (field, value) => {
-    let message = "";
-    let invalid = false;
-
-    if (!value.trim()) {
-      message = `${field === "fullName" ? "Full Name" : field} is required`;
-      invalid = true;
-    } else if (
-      field === "email" &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
-    ) {
-      message = "Enter a valid email address";
-      invalid = true;
-    }
-
-    setErrors((prev) => ({
-      ...prev,
-      [field]: { message, invalid },
-    }));
+  const runValidation = (field, value) => {
+    const result = validate(field, value);
+    setErrors((prev) => ({ ...prev, [field]: result }));
   };
 
   const handleChange = (e) => {
@@ -74,7 +59,7 @@ export default function ContactForm() {
       [name]: value,
     }));
 
-    validateField(name, value);
+    runValidation(name, value);
   };
 
   const handleSubmit = async (e) => {
@@ -94,7 +79,7 @@ export default function ContactForm() {
       const result = await res.json();
       if (result.success) {
         setStatusMessage(
-          "Thanks for reaching out! you’re message was well and will get back to you soon. 📩"
+          "Thanks for reaching out! Your message was sent successfully. 📩"
         );
         setFormData({ fullName: "", email: "", message: "" });
         setDirtyFields({ fullName: false, email: false, message: false });
