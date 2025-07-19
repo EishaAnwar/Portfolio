@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { MdOutlineVerifiedUser } from "react-icons/md"; // MdEmojiEventsOutlined is just for demonstration if exists
-
+import { MdOutlineVerifiedUser } from "react-icons/md";
+import { HiOutlineDocumentText } from "react-icons/hi";
 const navLinks = [
   {
     href: "#about",
@@ -30,6 +30,11 @@ const navLinks = [
     href: "#awards",
     name: "Awards",
     icon: MdOutlineVerifiedUser,
+  },
+  {
+    href: "#certification",
+    name: "Certification",
+    icon: HiOutlineDocumentText,
   },
   {
     href: "#contact",

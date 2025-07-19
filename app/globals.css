@@ -43,6 +43,20 @@ body {
   }
 }
 
+.title {
+  font-size: clamp(40px, 6vw, 90px);
+  line-height: 1;
+  font-weight: bold;
+
+  p:nth-child(odd) {
+    color: white;
+  }
+
+  p:nth-child(even) {
+    color: #b6b4bd33; /* semi-transparent */
+  }
+}
+
 .main-container {
   top: 40px;
   width: 90%;
@@ -159,20 +173,6 @@ body {
       }
 
       .container {
-        .title {
-          font-size: clamp(40px, 6vw, 90px);
-          line-height: 1;
-          font-weight: bold;
-
-          p:nth-child(odd) {
-            color: white;
-          }
-
-          p:nth-child(even) {
-            color: #b6b4bd33; /* semi-transparent */
-          }
-        }
-
         .intro {
           color: #998f8f;
           line-height: 1.6;

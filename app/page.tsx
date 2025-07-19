@@ -5,6 +5,7 @@ import AppNavigation from "@/pages/AppNavigation";
 import EmbedLinkedInPost from "@/pages/EmbedLinkedInPost";
 import SkillSet from "@/pages/SkillSet";
 import MyProjects from "@/pages/MyProjects";
+import ContactForm from "@/pages/ContactForm";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
               <SkillSet />
               <MyProjects />
               <EmbedLinkedInPost />
+              <ContactForm/>
             </div>
           </div>
         </div>
