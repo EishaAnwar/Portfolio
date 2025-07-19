@@ -127,7 +127,7 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <div className="mt-2 flex justify-end">
+                {/* <div className="mt-2 flex justify-end">
                   <button
                     onClick={() => setSelectedProject(project)}
                     className="text-sm text-[#f46c38] hover:underline flex items-center gap-1"
@@ -135,7 +135,7 @@ export default function Projects() {
                     View Details{" "}
                     <FaArrowUpRightFromSquare className="text-xs" />
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
 

@@ -31,11 +31,11 @@ const navLinks = [
     name: "Awards",
     icon: MdOutlineVerifiedUser,
   },
-  {
-    href: "#certification",
-    name: "Certification",
-    icon: HiOutlineDocumentText,
-  },
+  // {
+  //   href: "#certification",
+  //   name: "Certification",
+  //   icon: HiOutlineDocumentText,
+  // },
   {
     href: "#contact",
     name: "Contact",
