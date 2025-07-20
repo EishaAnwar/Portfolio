@@ -2,9 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "next.config.js",
+      "src": "package.json",
       "use": "@vercel/next"
     }
   ],
-  "redirects": [{ "source": "/www", "destination": "/", "permanent": true }]
+  "redirects": [
+    {
+      "source": "/www",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
 }
