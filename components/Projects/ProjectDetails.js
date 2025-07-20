@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { FaTimes } from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import Image from "next/image";
@@ -9,9 +8,8 @@ import Link from "next/link";
 import ProjectKeyFeatures from "./ProjectKeyFeatures";
 
 export default function ProjectDetails({ project, onClose, techIcons }) {
-  const modalRef = useRef();
+  const modalRef = useRef(null);
 
-  // Close modal if user clicks outside of it
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -19,7 +17,10 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside, {
+      passive: true,
+    });
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -78,6 +79,7 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors duration-300"
+                  aria-label={`${project.name} link`}
                 >
                   <FaArrowUpRightFromSquare className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
                 </Link>
@@ -91,7 +93,7 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
           {/* Internal Tag */}
           {project.isInternal && (
             <p className="text-xs text-yellow-400 italic mb-2">
-              ⚠️ Internal Project – accessible only via Walmart VPN
+              ⚠️ Internal Project – accessible only via VPN
             </p>
           )}
 
@@ -127,9 +129,8 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
 
           {/* Features */}
           <div>
-            <div className="flex items-center gap-4 mb-4">
-              <ProjectKeyFeatures features={project.features} />
-            </div>
+            <div className="flex items-center gap-4 mb-4"></div>
+            <ProjectKeyFeatures features={project.features} />
           </div>
         </div>
       </div>

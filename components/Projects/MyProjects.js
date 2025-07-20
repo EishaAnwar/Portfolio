@@ -181,9 +181,14 @@ export default function Projects() {
                 <Link
                   href={project.link}
                   target="_blank"
+                  alt={project.name}
                   className="text-xs text-[#f46c38] hover:underline flex items-center gap-1"
+                  aria-label={`${project.name} link`}
                 >
-                  <FaArrowUpRightFromSquare className="text-[10px]" />
+                  <FaArrowUpRightFromSquare
+                    alt="openlink"
+                    className="text-[10px]"
+                  />
                 </Link>
               </div>
             )}

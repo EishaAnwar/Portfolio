@@ -29,6 +29,7 @@ export default function ProfileCard() {
               target="_blank"
               href="https://github.com/EishaAnwar"
               title="Github"
+              aria-label="github"
             >
               <Image
                 src={
@@ -43,6 +44,7 @@ export default function ProfileCard() {
               target="_blank"
               href="mailto:eishaanwar51@gmail.com"
               title="Gmail"
+              aria-label="gmail"
             >
               <Image
                 src={
@@ -56,6 +58,7 @@ export default function ProfileCard() {
             <Link
               href="https://www.linkedin.com/in/eisha-anwar/"
               title="LinkedIn"
+              aria-label="linkedIn"
             >
               <Image
                 src={
@@ -72,6 +75,7 @@ export default function ProfileCard() {
               target="_blank"
               download
               rel="noopener noreferrer"
+              aria-label="download resume"
             >
               <Image
                 src={

@@ -41,7 +41,7 @@ export default function ABoutMe() {
             height={48}
           />
 
-          <Link href="#contact">
+          <Link href="#contact" aria-label="contact">
             <span className="line-break">Let’s build something</span>
 
             <div className="work-together-box">

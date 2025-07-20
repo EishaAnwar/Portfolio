@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { MdOutlineVerifiedUser, MdEmojiEvents } from "react-icons/md";
 const navLinks = [
   {
@@ -57,10 +58,11 @@ export default function NavigationMenu({ viewedSection, vertical }) {
       `}
     >
       {navLinks.map((nav) => (
-        <a
+        <Link
           key={nav.name}
           href={nav.href}
           className="group relative flex items-center justify-center"
+          aria-label={nav.name}
         >
           {typeof nav.icon === "string" ? (
             <Image
@@ -94,7 +96,7 @@ export default function NavigationMenu({ viewedSection, vertical }) {
           >
             {nav.name}
           </span>
-        </a>
+        </Link>
       ))}
     </nav>
   );
