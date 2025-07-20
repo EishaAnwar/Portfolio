@@ -59,6 +59,7 @@ export default function ProfileCard() {
               href="https://www.linkedin.com/in/eisha-anwar/"
               title="LinkedIn"
               aria-label="linkedIn"
+              target="_blank"
             >
               <Image
                 src={
