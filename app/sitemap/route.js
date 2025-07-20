@@ -1,5 +1,7 @@
+// app/sitemap/route.js
+
 export async function GET() {
-  const baseUrl = "https://eishaanwar.me"; // Replace with your live domain
+  const baseUrl = "https://eishaanwar.me";
 
   const pages = [
     "",
