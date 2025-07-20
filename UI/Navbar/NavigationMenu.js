@@ -31,11 +31,11 @@ const navLinks = [
     name: "Awards",
     icon: MdEmojiEvents,
   },
-  {
-    href: "#certification",
-    name: "Certification",
-    icon: MdOutlineVerifiedUser,
-  },
+  // {
+  //   href: "#certification",
+  //   name: "Certification",
+  //   icon: MdOutlineVerifiedUser,
+  // },
   {
     href: "#contact",
     name: "Contact",
@@ -52,7 +52,7 @@ export default function NavigationMenu({ viewedSection, vertical }) {
       className={`z-[1000] bg-[#1C1A19] px-5 py-2.5 text-white
         ${
           vertical
-            ? "fixed right-0 top-[40px] flex flex-col justify-between h-[230px] rounded-tl-[14px] rounded-bl-[14px] mx-auto my-[30px] hidden md:flex"
+            ? "fixed right-0 top-[40px] flex-col justify-between h-[230px] rounded-tl-[14px] rounded-bl-[14px] mx-auto my-[30px] flex"
             : "flex justify-between items-center rounded-[14px] w-[300px] mx-auto my-[30px]"
         }
       `}
