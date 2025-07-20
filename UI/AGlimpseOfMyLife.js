@@ -53,8 +53,7 @@ export default function AGlimpseOfMyLife() {
   // If error or no images after loading, show fallback
   if (!loading && (error || images.length === 0)) {
     return (
-      <div className="w-full text-center py-16 text-gray-400 text-sm">
-      </div>
+      <div className="w-full text-center py-16 text-gray-400 text-sm"></div>
     );
   }
 

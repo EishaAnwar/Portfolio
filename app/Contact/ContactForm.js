@@ -2,8 +2,8 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import InputField from "./InputField";
-import { validateField as validate } from "../lib/validations";
+import InputField from "../../UI/InputField";
+import { validateField as validate } from "../../lib/validations";
 
 export default function ContactForm() {
   const formRef = useRef(null);
