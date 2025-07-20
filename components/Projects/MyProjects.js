@@ -15,7 +15,7 @@ import {
   FaCloud,
 } from "react-icons/fa";
 import { SiNextdotjs, SiTailwindcss } from "react-icons/si";
-import ProjectDetails from "./ProjectDetails"; // adjust path based on your folder structure
+import ProjectDetails from "./ProjectDetails";
 
 const techIcons = {
   React: <FaReact />,
@@ -39,12 +39,20 @@ const projects = [
       "Portfolio site to highlight my skills, tech stack, and featured projects, built with modern technologies.",
     preview: "/images/PortfolioPreview.png",
     link: "https://eishaportfolio.vercel.app/",
-    tech: ["Next.js", "React", "Tailwind CSS", "Cloudinary"],
+    tech: ["Next.js", "React", "Tailwind CSS", "Cloudinary", "Resend"],
+    features: [
+      "Built with Next.js and Tailwind CSS for performance, scalability, and modern styling",
+      "Email functionality powered by Resend API with secure server-side handling",
+      "Images hosted via Cloudinary for fast, optimized media delivery",
+      "Deployed on Vercel with seamless CI/CD integration",
+      "Custom domain: eishaanwar.me connected and configured",
+    ],
+    type: "webapp",
   },
   {
     name: "IBG (Intelligent Business Growth)",
     description:
-      "Internal Walmart tool using microfrontend architecture and analytics integration.",
+      "IBG (Intelligent Business Growth) provides a structure for measuring the impact of multiple initiatives on the P&L and prescriptive insights for connected financial driven decision making. The platform will be integrated with up/downstream systems to systematically execute approved plans and offer end-to-end visibility into value realization.",
     preview: "/images/WalmartLogo.png",
     link: "http://ibgworkbench.qa.walmart.com/",
     tech: [
@@ -60,15 +68,40 @@ const projects = [
       "GraphQL",
     ],
     isInternal: true,
+    type: "webapp",
+    features: [
+      "Built with React and Walmart’s internal design system (walmart-web/livingdesign-components) for consistent UI",
+      "Built using Microfrontend Architecture enabling modular, plug-and-play component development for scalability and reusability",
+      "Provides prescriptive insights and visualizations to assess impact across P&L for financial planning",
+      "Built with AgGrid and Chart.js for dynamic data tables and insightful visual dashboards",
+      "Internal analytics powered by Google Analytics to track user engagement and behavior",
+      "Enables cross-functional collaboration during strategic planning to improve decision-making",
+      "Integrates with upstream and downstream systems for seamless execution and visibility of approved plans",
+      "Features end-to-end visibility into initiative value realization across the enterprise",
+      "Uses Redux and GraphQL for state management and efficient data fetching",
+      "Includes unit and integration tests using React Testing Library to ensure feature reliability",
+    ],
   },
   {
     name: "Tripocity",
     description:
-      "Internal Walmart tool using microfrontend architecture and analytics integration.",
+      "Tripocity is a mobile application designed to simplify trip planning by automatically generating itineraries based on user interests, travel duration, and location. It provides optimized routes on maps, location-based recommendations, editable trip plans, and real-time information including hotels, hospitals, emergency services, and nearby restaurants. The app supports both manual and system-generated trip customization, delivering a seamless travel planning experience.",
     preview: "/images/Thesis.jpeg",
     link: "https://github.com/EishaAnwar/FYP",
     tech: ["React Native", "Node.js", "MySql", "TomTom Map", "REST API"],
     isInternal: false,
+    type: "mobile app",
+    features: [
+      "Built with Node.js backend, MySQL database, and REST APIs",
+      "Interactive map with optimal travel routes and estimated travel time",
+      "Manual trip creation and full itinerary editing before trip starts",
+      "View images and information for all locations in the itinerary",
+      "Nearby services: hotels, hospitals, emergency numbers, and restaurants",
+      "Cross-platform support for Android and iOS (React Native)",
+      "AI-assisted trip generation based on user interests and available time",
+      "Real-time location tracking and map-based navigation",
+      "Modular MVC architecture for scalable development",
+    ],
   },
 ];
 
@@ -77,7 +110,7 @@ export default function Projects() {
 
   return (
     <div id="projects" className="container px-4 py-16 max-w-6xl mx-auto">
-      <div className="title mb-[30px]">
+      <div className="title mb-8">
         <p>Recent</p>
         <p>Projects</p>
       </div>
@@ -89,6 +122,7 @@ export default function Projects() {
             className="project flex flex-col sm:flex-row justify-between items-start text-white cursor-default rounded-[16px] transition duration-300 px-[10px] py-[16px] border border-transparent hover:-translate-y-1 hover:bg-[#1a1817] hover:shadow-lg hover:border-[#f46c38] hover:border-l-[8px]"
           >
             <div className="inner-container flex flex-col md:flex-row items-center gap-5 w-full">
+              {/* Image */}
               <div className="project-preview flex items-center justify-center overflow-hidden h-[160px] w-full sm:w-[92%] md:h-[93px] md:w-[160px] rounded-lg">
                 <Image
                   src={project.preview}
@@ -99,8 +133,9 @@ export default function Projects() {
                 />
               </div>
 
-              <div className="project-info flex flex-col gap-[3px] w-full">
-                <p className="text-[24px] font-bold">{project.name}</p>
+              {/* Info */}
+              <div className="project-info flex flex-col gap-2 w-full">
+                <p className="text-xl font-bold">{project.name}</p>
                 <p className="text-[#998f8f] text-sm line-clamp-2">
                   {project.description}
                 </p>
@@ -110,6 +145,7 @@ export default function Projects() {
                     ⚠️ Internal Project – accessible only via Walmart VPN
                   </p>
                 )}
+
                 {project.link && project.isInternal && (
                   <p className="text-xs text-gray-400 break-all mt-1">
                     URL: {project.link}
@@ -139,18 +175,15 @@ export default function Projects() {
               </div>
             </div>
 
+            {/* External Link (for public projects) */}
             {project.link && !project.isInternal && (
-              <div className="mt-2 flex justify-end">
+              <div className="mt-2 flex justify-end sm:justify-start px-2">
                 <Link
                   href={project.link}
                   target="_blank"
-                  className="text-sm text-[#f46c38] hover:underline flex items-center gap-1"
+                  className="text-xs text-[#f46c38] hover:underline flex items-center gap-1"
                 >
-                  <FaArrowUpRightFromSquare
-                    width={24}
-                    height={24}
-                    className="text-xs"
-                  />
+                  <FaArrowUpRightFromSquare className="text-[10px]" />
                 </Link>
               </div>
             )}
@@ -158,11 +191,14 @@ export default function Projects() {
         ))}
       </div>
 
-      <ProjectDetails
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-        techIcons={techIcons}
-      />
+      {/* Modal for details */}
+      {selectedProject && (
+        <ProjectDetails
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+          techIcons={techIcons}
+        />
+      )}
     </div>
   );
 }

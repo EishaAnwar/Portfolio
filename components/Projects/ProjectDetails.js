@@ -1,58 +1,135 @@
-// components/ProjectModal.jsx
 "use client";
 
-import Image from "next/image";
+import React from "react";
+import { useEffect, useRef } from "react";
 import { FaTimes } from "react-icons/fa";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import Image from "next/image";
+import Link from "next/link";
+import ProjectKeyFeatures from "./ProjectKeyFeatures";
 
-export default function ProjectModal({ project, onClose, techIcons }) {
+export default function ProjectDetails({ project, onClose, techIcons }) {
+  const modalRef = useRef();
+
+  // Close modal if user clicks outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
+
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center">
-      <div className="bg-[#1a1817] text-white p-6 rounded-lg max-w-lg w-full relative">
+    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex justify-center items-center px-4 py-8">
+      <div
+        ref={modalRef}
+        className="relative bg-zinc-900 text-white rounded-xl w-full max-w-2xl p-6 shadow-2xl overflow-y-auto max-h-[90vh]"
+      >
+        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-white text-xl"
+          className="absolute top-3 right-4 text-gray-400 hover:text-white text-xl"
+          aria-label="Close"
         >
           <FaTimes />
         </button>
 
-        {/* ✅ Project Image */}
-        <div className="mb-4">
-          <Image
-            src={project.preview}
-            alt={project.name}
-            width={600}
-            height={300}
-            className="rounded-md object-contain w-full max-h-[250px] mx-auto"
-          />
-        </div>
-
-        <h2 className="text-xl font-bold mb-2">{project.name}</h2>
-        <p className="text-sm text-[#998f8f] mb-4">{project.description}</p>
-
-        {project.features && (
-          <div className="mb-4">
-            <h3 className="font-semibold mb-1">Key Features:</h3>
-            <ul className="list-disc list-inside text-sm">
-              {project.features.map((feature, i) => (
-                <li key={i}>{feature}</li>
-              ))}
-            </ul>
+        {/* Preview Image */}
+        {project.preview && (
+          <div className="w-full mt-3 mb-4 rounded-lg overflow-hidden border border-white/10">
+            <Image
+              src={project.preview}
+              alt={`${project.name} preview`}
+              width={600}
+              height={300}
+              className="rounded-md object-contain w-full max-h-[250px] mx-auto"
+            />
           </div>
         )}
 
-        <div>
-          <h3 className="font-semibold mb-1">Technologies:</h3>
-          <div className="flex flex-wrap gap-2">
-            {project.tech.map((tech, i) => (
-              <span
-                key={i}
-                className="flex items-center gap-1 px-2 py-0.5 text-[10px] bg-white/10 text-white border border-white/30 rounded-full"
-              >
-                {techIcons[tech] || null} {tech}
-              </span>
-            ))}
+        <div className="mt-5 space-y-6">
+          {/* Header */}
+          <div className="flex flex-start items-center justify-between">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-2 h-2 bg-zinc-400 dark:bg-zinc-600" />
+                <span className="text-xs uppercase text-zinc-500 dark:text-zinc-400">
+                  {project.type || "webapp"}
+                </span>
+              </div>
+              <h2 className="text-2xl font-bold text-zinc-100 text-[clamp(24px, 6vw, 35px)]">
+                {project.name}
+              </h2>
+            </div>
+
+            {/* External Link */}
+            {project.link && !project.isInternal && (
+              <div className="flex gap-2 items-center">
+                <Link
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors duration-300"
+                >
+                  <FaArrowUpRightFromSquare className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Description */}
+          <p className="text-zinc-400 font-light">{project.description}</p>
+
+          {/* Internal Tag */}
+          {project.isInternal && (
+            <p className="text-xs text-yellow-400 italic mb-2">
+              ⚠️ Internal Project – accessible only via Walmart VPN
+            </p>
+          )}
+
+          {/* Technologies */}
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <h4 className="text-lg font-light text-zinc-100 tracking-tight">
+                Technologies:
+              </h4>
+              <div className="flex-1 h-px bg-zinc-800" />
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3">
+              {project.tech.map((tech, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700"
+                >
+                  <div className="w-5 h-5 flex-shrink-0 text-zinc-900 dark:text-white flex items-center justify-center">
+                    {techIcons[tech] &&
+                      React.isValidElement(techIcons[tech]) &&
+                      React.cloneElement(techIcons[tech], {
+                        className: "w-5 h-5",
+                      })}
+                  </div>
+                  <span className="text-sm text-zinc-700 dark:text-zinc-300 font-light">
+                    {tech}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Features */}
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <ProjectKeyFeatures features={project.features} />
+            </div>
           </div>
         </div>
       </div>
