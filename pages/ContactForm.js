@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import InputField from "./InputField";
 import { validateField as validate } from "../lib/validations";
 
 export default function ContactForm() {
+  const formRef = useRef(null);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -30,6 +32,7 @@ export default function ContactForm() {
 
   const isFormValid = Object.values(errors).every((e) => !e.invalid);
 
+  // Validation hooks
   useEffect(() => {
     if (!isClearing) runValidation("fullName", formData.fullName);
   }, [formData.fullName, isClearing]);
@@ -64,7 +67,10 @@ export default function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isFormValid) return;
+    if (!isFormValid) {
+      scrollToFirstError();
+      return;
+    }
 
     setIsSending(true);
     setStatusMessage("");
@@ -105,8 +111,19 @@ export default function ContactForm() {
     });
   };
 
+  const scrollToFirstError = () => {
+    const firstInvalidField = Object.entries(errors).find(
+      ([, value]) => value.invalid
+    );
+    if (firstInvalidField) {
+      const fieldId = firstInvalidField[0];
+      const el = formRef.current?.querySelector(`#${fieldId}`);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
   return (
-    <div id="contact">
+    <div id="contact" ref={formRef}>
       <div className="title">
         <p>LET&apos;S WORK</p>
         <p>TOGETHER</p>
