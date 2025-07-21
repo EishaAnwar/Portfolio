@@ -38,7 +38,7 @@ const projects = [
     description:
       "Portfolio site to highlight my skills, tech stack, and featured projects, built with modern technologies.",
     preview: "/images/PortfolioPreview.png",
-    link: "https://eishaportfolio.vercel.app/",
+    link: "https://github.com/EishaAnwar/Portfolio/",
     tech: ["Next.js", "React", "Tailwind CSS", "Cloudinary", "Resend"],
     features: [
       "Built with Next.js and Tailwind CSS for performance, scalability, and modern styling",
@@ -135,7 +135,27 @@ export default function Projects() {
 
               {/* Info */}
               <div className="project-info flex flex-col gap-2 w-full">
+                <div className="flex justify-between">
                 <p className="text-xl font-bold">{project.name}</p>
+
+                {/* External Link (for public projects) */}
+                {project.link && !project.isInternal && (
+                  <div className="mt-2 flex justify-end sm:justify-start px-2">
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      alt={project.name}
+                      className="text-xs text-[#f46c38] hover:underline flex items-center gap-1"
+                      aria-label={`${project.name} link`}
+                    >
+                      <FaArrowUpRightFromSquare
+                        alt="openlink"
+                        className="text-[10px]"
+                      />
+                    </Link>
+                  </div>
+                )}
+                </div>
                 <p className="text-[#998f8f] text-sm line-clamp-2">
                   {project.description}
                 </p>
@@ -174,24 +194,6 @@ export default function Projects() {
                 </div>
               </div>
             </div>
-
-            {/* External Link (for public projects) */}
-            {project.link && !project.isInternal && (
-              <div className="mt-2 flex justify-end sm:justify-start px-2">
-                <Link
-                  href={project.link}
-                  target="_blank"
-                  alt={project.name}
-                  className="text-xs text-[#f46c38] hover:underline flex items-center gap-1"
-                  aria-label={`${project.name} link`}
-                >
-                  <FaArrowUpRightFromSquare
-                    alt="openlink"
-                    className="text-[10px]"
-                  />
-                </Link>
-              </div>
-            )}
           </div>
         ))}
       </div>
