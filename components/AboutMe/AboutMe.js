@@ -9,7 +9,7 @@ export default function ABoutMe() {
         <p>ENGINEER</p>
       </div>
 
-      <div className=".intro">
+      <div className="intro">
         👋 With over two years of experience in software development, I
         specialize in building robust, scalable web applications using modern
         technologies like React.js, Next.js, and TypeScript. I’ve contributed to

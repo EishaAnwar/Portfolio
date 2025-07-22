@@ -37,10 +37,6 @@ export default function RootLayout({
         />
         <meta property="og:url" content="https://eishaanwar.me" />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content="https://eishaanwar.me/images/og-image.jpg"
-        />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Eisha Anwar Portfolio" />
@@ -48,12 +44,9 @@ export default function RootLayout({
           name="twitter:description"
           content="Eisha Anwar is a skilled full stack developer and software engineer."
         />
-        <meta
-          name="twitter:image"
-          content="https://eishaanwar.me/images/og-image.jpg"
-        />
 
         <link rel="canonical" href="https://eishaanwar.me" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
         <script
           type="application/ld+json"
