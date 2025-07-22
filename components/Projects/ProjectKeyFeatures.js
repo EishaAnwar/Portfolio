@@ -6,10 +6,10 @@ export default function ProjectKeyFeatures({ features }) {
   return (
     <div>
       <div className="flex items-center gap-4 mb-4">
-        <h3 className="text-lg font-light text-zinc-900 dark:text-zinc-100 tracking-tight">
+        <h3 className="text-lg font-light text-zinc-100 tracking-tight">
           Key Features
         </h3>
-        <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800"></div>
+        <div className="flex-1 h-px bg-zinc-800"></div>
       </div>
 
       <div className="space-y-3">
