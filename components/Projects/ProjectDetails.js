@@ -112,14 +112,14 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
                   key={i}
                   className="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700"
                 >
-                  <div className="w-5 h-5 flex-shrink-0 text-zinc-900 dark:text-white flex items-center justify-center">
+                  <div className="w-5 h-5 flex-shrink-0 text-zinc-900 dark:text-white flex items-center justify-center break-words break-all">
                     {techIcons[tech] &&
                       React.isValidElement(techIcons[tech]) &&
                       React.cloneElement(techIcons[tech], {
                         className: "w-5 h-5",
                       })}
                   </div>
-                  <span className="text-sm text-zinc-700 dark:text-zinc-300 font-light">
+                  <span className="text-sm text-zinc-700 dark:text-zinc-300 font-light break-words break-all">
                     {tech}
                   </span>
                 </div>
@@ -129,7 +129,7 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
 
           {/* Features */}
           <div>
-            <div className="flex items-center gap-4 mb-4"></div>
+            <div className="flex items-center gap-4 mb-4 break-words break-all"></div>
             <ProjectKeyFeatures features={project.features} />
           </div>
         </div>

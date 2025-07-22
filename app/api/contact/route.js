@@ -35,7 +35,6 @@ export async function POST(req) {
       html: `
         <p>Hi ${fullName},</p>
         <p>Thank you for contacting me through my portfolio. I’ve received your message and will get back to you as soon as possible.</p>
-        <p>Thank you for contacting me through my portfolio. I’ve received your message and will get back to you as soon as possible.</p>
         <p>Have a great day!<br/>— Eisha</p>
       `,
     });
