@@ -61,8 +61,8 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
           <div className="flex flex-start items-center justify-between">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-2 h-2 bg-zinc-400 dark:bg-zinc-600" />
-                <span className="text-xs uppercase text-zinc-500 dark:text-zinc-400">
+                <div className="w-2 h-2 bg-zinc-600" />
+                <span className="text-xs uppercase text-zinc-400">
                   {project.type || "webapp"}
                 </span>
               </div>
@@ -78,10 +78,10 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors duration-300"
+                  className="flex items-center justify-center w-10 h-10 bg-zinc-800 border border-zinc-700 hover:border-zinc-600 transition-colors duration-300"
                   aria-label={`${project.name} link`}
                 >
-                  <FaArrowUpRightFromSquare className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
+                  <FaArrowUpRightFromSquare className="w-4 h-4 bg-zinc-300" />
                 </Link>
               </div>
             )}
@@ -110,16 +110,16 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
               {project.tech.map((tech, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700"
+                  className="flex items-center gap-3 p-3 bg-zinc-800 border border-zinc-700"
                 >
-                  <div className="w-5 h-5 flex-shrink-0 text-zinc-900 dark:text-white flex items-center justify-center break-words break-all">
+                  <div className="w-5 h-5 flex-shrink-0 text-white flex items-center justify-center break-words break-all">
                     {techIcons[tech] &&
                       React.isValidElement(techIcons[tech]) &&
                       React.cloneElement(techIcons[tech], {
                         className: "w-5 h-5",
                       })}
                   </div>
-                  <span className="text-sm text-zinc-700 dark:text-zinc-300 font-light break-words break-all">
+                  <span className="text-sm text-zinc-300 font-light break-words break-all">
                     {tech}
                   </span>
                 </div>

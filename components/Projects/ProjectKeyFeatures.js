@@ -16,9 +16,9 @@ export default function ProjectKeyFeatures({ features }) {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="flex items-start gap-3 text-zinc-600 dark:text-zinc-400 font-light"
+            className="flex items-start gap-3 text-zinc-400 font-light"
           >
-            <div className="w-1 h-1 bg-zinc-400 dark:bg-zinc-600 mt-2 flex-shrink-0"></div>
+            <div className="w-1 h-1 bg-zinc-600 mt-2 flex-shrink-0"></div>
             {feature}
           </div>
         ))}
