@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import Image from "next/image";
 
 export default function AGlimpseOfMyLife() {
   const [rawImages, setRawImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -32,7 +33,6 @@ export default function AGlimpseOfMyLife() {
 
   const images = useMemo(() => {
     if (loading) {
-      // Show 8 skeleton placeholders while loading
       return Array.from({ length: 8 }, (_, i) => ({
         isPlaceholder: true,
         id: `placeholder-${i}`,
@@ -50,7 +50,16 @@ export default function AGlimpseOfMyLife() {
     }));
   }, [loading, error, rawImages]);
 
-  // If error or no images after loading, show fallback
+  const scroll = (dir) => {
+    if (scrollRef.current) {
+      const scrollAmount = 200;
+      scrollRef.current.scrollBy({
+        left: dir === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   if (!loading && (error || images.length === 0)) {
     return (
       <div className="w-full text-center py-16 text-gray-400 text-sm"></div>
@@ -58,8 +67,29 @@ export default function AGlimpseOfMyLife() {
   }
 
   return (
-    <section className="w-full overflow-x-hidden">
-      <div className="overflow-x-auto scrollbar-hide">
+    <section className="relative w-full overflow-x-hidden">
+      {/* Arrows for mobile view only */}
+      <div className="md:hidden absolute z-10 top-1/2 left-0 -translate-y-1/2 px-1">
+        <button
+          onClick={() => scroll("left")}
+          className="bg-black/50 text-white p-2 rounded-full"
+        >
+          ◀
+        </button>
+      </div>
+      <div className="md:hidden absolute z-10 top-1/2 right-0 -translate-y-1/2 px-1">
+        <button
+          onClick={() => scroll("right")}
+          className="bg-black/50 text-white p-2 rounded-full"
+        >
+          ▶
+        </button>
+      </div>
+
+      <div
+        ref={scrollRef}
+        className="overflow-x-auto scrollbar-hide scroll-smooth"
+      >
         <div className="flex gap-8 px-4 py-8 w-max">
           {images.map((img, index) => (
             <div

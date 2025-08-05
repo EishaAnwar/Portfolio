@@ -136,40 +136,49 @@ export default function Projects() {
               {/* Info */}
               <div className="project-info flex flex-col gap-2 w-full">
                 <div className="flex justify-between">
-                <p className="text-xl font-bold">{project.name}</p>
+                  <p className="text-xl font-bold">{project.name}</p>
 
-                {/* External Link (for public projects) */}
-                {project.link && !project.isInternal && (
-                  <div className="mt-2 flex justify-end sm:justify-start px-2">
-                    <Link
-                      href={project.link}
-                      target="_blank"
-                      alt={project.name}
-                      className="text-xs text-[#f46c38] hover:underline flex items-center gap-1"
-                      aria-label={`${project.name} link`}
-                    >
-                      <FaArrowUpRightFromSquare
-                        alt="openlink"
-                        className="text-[10px]"
-                      />
-                    </Link>
-                  </div>
-                )}
+                  {/* External Link (for public projects) */}
+                  {project.link && !project.isInternal && (
+                    <div className="mt-2 flex justify-end sm:justify-start px-2">
+                      <div className="relative group inline-block">
+                        <Link
+                          href={project.link}
+                          target="_blank"
+                          alt={project.name}
+                          className="text-xs text-[#f46c38] hover:underline flex items-center gap-1"
+                          aria-label={`${project.name} link`}
+                        >
+                          <FaArrowUpRightFromSquare
+                            alt="openlink"
+                            className="text-[10px] cursor-pointer"
+                          />
+                        </Link>
+
+                        {/* Tooltip */}
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-max max-w-xs bg-gray-800 text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
+                          Open Link
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <p className="text-[#998f8f] text-sm line-clamp-2">
                   {project.description}
                 </p>
 
                 {project.isInternal && (
-                  <p className="text-xs text-yellow-400 mt-1 italic">
-                    ⚠️ Internal Project – accessible only via Walmart VPN
-                  </p>
-                )}
+                  <div className="relative group inline-block">
+                    <p className="text-xs text-yellow-400 mt-1 italic">
+                      ⚠️ Internal Project – accessible only via Walmart VPN
+                    </p>
 
-                {project.link && project.isInternal && (
-                  <p className="text-xs text-gray-400 break-all mt-1">
-                    URL: {project.link}
-                  </p>
+                    {project.link && (
+                      <div className="absolute z-10 left-0 top-full mt-1 w-max max-w-xs bg-gray-800 text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                        {project.link}
+                      </div>
+                    )}
+                  </div>
                 )}
 
                 <div className="flex flex-wrap gap-2 mt-3">
@@ -186,7 +195,7 @@ export default function Projects() {
                 <div className="mt-2 flex justify-end">
                   <button
                     onClick={() => setSelectedProject(project)}
-                    className="text-sm text-[#f46c38] hover:underline flex items-center gap-1"
+                    className="text-sm text-[#f46c38] hover:underline flex items-center gap-1 cursor-pointer"
                   >
                     View Details{" "}
                     <FaArrowUpRightFromSquare className="text-xs" />

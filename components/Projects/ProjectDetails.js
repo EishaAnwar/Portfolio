@@ -110,7 +110,7 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
               {project.tech.map((tech, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 p-3 bg-zinc-800 border border-zinc-700"
+                  className="flex items-center gap-3 p-3 bg-zinc-800/70 border border-zinc-700"
                 >
                   <div className="w-5 h-5 flex-shrink-0 text-white flex items-center justify-center break-words break-all">
                     {techIcons[tech] &&
