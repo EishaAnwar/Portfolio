@@ -81,7 +81,7 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
                   className="flex items-center justify-center w-10 h-10 bg-zinc-800 border border-zinc-700 hover:border-zinc-600 transition-colors duration-300"
                   aria-label={`${project.name} link`}
                 >
-                  <FaArrowUpRightFromSquare className="w-4 h-4 bg-zinc-300" />
+                  <FaArrowUpRightFromSquare className="w-4 h-4 bg-transparent border-0" />
                 </Link>
               </div>
             )}
