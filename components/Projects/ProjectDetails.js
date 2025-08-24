@@ -44,17 +44,16 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
         </button>
 
         {/* Preview Image */}
-        {project.preview && (
-          <div className="w-full mt-3 mb-4 rounded-lg overflow-hidden border border-white/10">
-            <Image
-              src={project.preview}
-              alt={`${project.name} preview`}
-              width={600}
-              height={300}
-              className="rounded-md object-contain w-full max-h-[250px] mx-auto"
-            />
-          </div>
-        )}
+
+        <div className="w-full mt-3 mb-4 rounded-lg overflow-hidden border border-white/10">
+          <Image
+            src={project.preview || "/images/vercel.png"}
+            alt={`${project.name} preview`}
+            width={600}
+            height={300}
+            className="rounded-md object-contain w-full max-h-[250px] mx-auto"
+          />
+        </div>
 
         <div className="mt-5 space-y-6">
           {/* Header */}
@@ -66,9 +65,15 @@ export default function ProjectDetails({ project, onClose, techIcons }) {
                   {project.type || "webapp"}
                 </span>
               </div>
-              <h2 className="text-2xl font-bold text-zinc-100 text-[clamp(24px, 6vw, 35px)]">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-zinc-100 text-[clamp(24px, 6vw, 35px)]"></h2>
                 {project.name}
-              </h2>
+                {project?.isInProgress && (
+                  <span className="text-xs text-orange-400 italic ml-2">
+                    • In Progress
+                  </span>
+                )}
+              </div>
             </div>
 
             {/* External Link */}

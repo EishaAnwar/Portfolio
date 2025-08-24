@@ -34,6 +34,34 @@ const techIcons = {
 
 const projects = [
   {
+    name: "EmpowerHerCouture",
+    description:
+      "My personal fashion brand website built to empower people through clothing and cognition. The vision behind EmpowerHardcoreTool is that clothing influences confidence, competence, and self-expression. This platform represents both my portfolio of work and the foundation for a future marketplace.",
+    preview: "", // Add brand image/logo under /public/images
+    link: "https://www.empowerhercouture.com/", // Replace with live site link when deployed
+    tech: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "MongoDB",
+      "Resend",
+      "Pusher",
+      "Vercel",
+    ],
+    features: [
+      "Pixel-perfect brand website designed to convey empowerment through clothing and self-expression",
+      "Contact form with email verification powered by Resend API + Pusher realtime feedback",
+      "Newsletter subscription with verification and MongoDB persistence",
+      "Cloudinary integration for optimized image/media delivery",
+      "Deployed on Vercel with custom domain configuration and seamless CI/CD pipeline",
+      "Responsive UI/UX crafted with Tailwind CSS for an elegant user experience",
+      "Future roadmap: marketplace for clothing, role-based access (designers/customers/admins), payment gateway integration, and full e-commerce capabilities",
+    ],
+    isInProgress: true,
+    type: "webapp",
+  },
+
+  {
     name: "Portfolio",
     description:
       "Portfolio site to highlight my skills, tech stack, and featured projects, built with modern technologies.",
@@ -48,6 +76,7 @@ const projects = [
       "Custom domain: eishaanwar.me connected and configured",
     ],
     type: "webapp",
+    isInProgress: false,
   },
   {
     name: "IBG (Intelligent Business Growth)",
@@ -81,6 +110,7 @@ const projects = [
       "Uses Redux and GraphQL for state management and efficient data fetching",
       "Includes unit and integration tests using React Testing Library to ensure feature reliability",
     ],
+    isInProgress: false,
   },
   {
     name: "Tripocity",
@@ -102,6 +132,7 @@ const projects = [
       "Real-time location tracking and map-based navigation",
       "Modular MVC architecture for scalable development",
     ],
+    isInProgress: false,
   },
 ];
 
@@ -125,7 +156,7 @@ export default function Projects() {
               {/* Image */}
               <div className="project-preview flex items-center justify-center overflow-hidden h-[160px] w-full sm:w-[92%] md:h-[93px] md:w-[160px] rounded-lg">
                 <Image
-                  src={project.preview}
+                  src={project.preview || "/images/vercel.png"}
                   alt={project.name}
                   width={300}
                   height={200}
@@ -136,8 +167,14 @@ export default function Projects() {
               {/* Info */}
               <div className="project-info flex flex-col gap-2 w-full">
                 <div className="flex justify-between">
-                  <p className="text-xl font-bold">{project.name}</p>
-
+                  <div className="flex justify-between items-center">
+                    <p className="text-xl font-bold">{project.name}</p>{" "}
+                    {project?.isInProgress && (
+                      <span className="text-xs text-orange-400 italic ml-2">
+                        • In Progress
+                      </span>
+                    )}
+                  </div>
                   {/* External Link (for public projects) */}
                   {project.link && !project.isInternal && (
                     <div className="mt-2 flex justify-end sm:justify-start px-2">
